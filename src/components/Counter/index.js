@@ -1,28 +1,32 @@
-import Component from 'react'
+import {Component} from 'react'
 
 import './index.css'
 
-class Counter {
+class Counter extends Component {
   state = {count: 0}
 
   onDecrement = () => {
-    this.state.count = this.state.count - 1;
+    this.setState(preState => ({
+      count: preState.count - 1,
+    }))
   }
 
   onIncrement = () => {
-    this.state.count = this.state.count + 1;
+    this.setState(preState => ({
+      count: preState.count + 1,
+    }))
   }
 
   render() {
-    {count} = this.state
+    const {count} = this.state
 
     return (
       <div className="app-container">
         <h1 className="count">Count {count}</h1>
-        <button className="button" onClick={this.onDecrement()} type="button">
+        <button className="button" onClick={this.onIncrement} type="button">
           Increase
         </button>
-        <button className="button" onClick={this.onIncrement()} type="button">
+        <button className="button" onClick={this.onDecrement} type="button">
           Decrease
         </button>
       </div>
